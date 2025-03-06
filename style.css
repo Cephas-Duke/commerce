@@ -107,14 +107,7 @@ header .cart a {
     font-size: 16px; /* Smaller font size for mobile */
   }
 }
-.cta-button {
-  background: #ff6f61;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  text-transform: uppercase;
-}
+
 /* Featured Products Section */
 .featured-products {
   padding: 50px 0;
@@ -162,6 +155,7 @@ header .cart a {
   border-radius: 5px;
   cursor: pointer;
 }
+
 .currency {
   font-weight: bold;
   color: #ff6f61; /* Match your theme color */
@@ -217,6 +211,7 @@ footer .social-media a {
 footer p {
   margin: 0;
 }
+
 /* Shop Page */
 .shop {
   padding: 50px 0;
@@ -278,6 +273,7 @@ footer p {
   border-radius: 5px;
   cursor: pointer;
 }
+
 .product-actions {
   display: flex;
   gap: 10px;
@@ -308,6 +304,7 @@ footer p {
 .view-details:hover {
   background: #e65a50;
 }
+
 /* Product Details Page */
 .product-details {
   padding: 50px 0;
@@ -394,5 +391,175 @@ footer p {
 }
 
 .add-to-cart:hover {
+  background: #ff6f61;
+}
+
+/* Shopping Cart Page */
+.cart-page {
+  padding: 50px 0;
+}
+
+.cart-page h2 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.item-image img {
+  width: 100px;
+  border-radius: 10px;
+}
+
+.item-details {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.item-details h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.item-details p {
+  font-size: 18px;
+  color: #ff6f61;
+}
+
+.quantity {
+  margin-top: 10px;
+}
+
+.quantity label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.quantity input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 60px;
+}
+
+.remove-item {
+  background: #ff6f61;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.cart-summary {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.cart-summary h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.cart-summary p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.checkout-button {
+  background: #333;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.checkout-button:hover {
+  background: #ff6f61;
+}
+
+/* Category Pages (Living Room, Bedroom, Dining Room) */
+.category-page {
+  padding: 50px 0;
+}
+
+.category-page h2 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Contact Page */
+.contact {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.contact p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.contact form {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.contact .form-group {
+  margin-bottom: 20px;
+}
+
+.contact label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.contact input,
+.contact textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.contact button {
+  background: #333;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.contact button:hover {
   background: #ff6f61;
 }

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dining Room - Wakili Furniture Store</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">wakili-Furniture<span>Store</span></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="living-room.html">Living Room</a></li>
+          <li><a href="bedroom.html">Bedroom</a></li>
+          <li><a href="dining-room.html">Dining Room</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="cart">
+        <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart (<span id="cart-count">0</span>)</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dining Room Section -->
+  <section class="category-page">
+    <div class="container">
+      <h2>Dining Room Furniture</h2>
+      <div class="product-grid">
+        <div class="product" data-id="8" data-category="tables" data-price="90000">
+          <img src="images/dining-table.jpg" alt="Dining Table">
+          <h3>Dining Table</h3>
+          <p><span class="currency">KSh</span> 90,000</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-id="9" data-category="chairs" data-price="25000">
+          <img src="images/dining-chair.jpg" alt="Dining Chair">
+          <h3>Dining Chair</h3>
+          <p><span class="currency">KSh</span> 25,000</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <!-- Add more products here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="social-media">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      <p>&copy; 2023 Wakili Furniture Store. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Cart Functionality -->
+  <script>
+    // Function to add an item to the cart
+    function addToCart(product) {
+      // Get the current cart from localStorage
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Check if the product is already in the cart
+      const existingItem = cart.find((item) => item.id === product.id);
+
+      if (existingItem) {
+        // Update quantity if the item already exists
+        existingItem.quantity += 1;
+      } else {
+        // Add the item to the cart if it doesn't exist
+        cart.push({ ...product, quantity: 1 });
+      }
+
+      // Save the updated cart to localStorage
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      // Update the cart count in the header
+      updateCartCount();
+    }
+
+    // Function to update the cart count in the header
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const cartCountElement = document.getElementById("cart-count");
+      cartCountElement.textContent = cart.length;
+    }
+
+    // Add event listeners to "Add to Cart" buttons
+    document.querySelectorAll(".add-to-cart").forEach((button) => {
+      button.addEventListener("click", () => {
+        const product = {
+          id: button.closest(".product").dataset.id, // Unique product ID
+          name: button.closest(".product").querySelector("h3").textContent,
+          price: parseFloat(button.closest(".product").querySelector("p").textContent.replace("KSh ", "").replace(",", "")),
+          image: button.closest(".product").querySelector("img").src,
+        };
+        addToCart(product);
+      });
+    });
+
+    // Update the cart count on page load
+    updateCartCount();
+  </script>
+</body>
+</html>

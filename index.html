@@ -18,14 +18,14 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="shop.html">Shop</a></li>
-          <li><a href="#">Living Room</a></li>
-          <li><a href="#">Bedroom</a></li>
-          <li><a href="#">Dining Room</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="living-room.html">Living Room</a></li>
+          <li><a href="bedroom.html">Bedroom</a></li>
+          <li><a href="dining-room.html">Dining Room</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
       <div class="cart">
-        <a href="#"><i class="fas fa-shopping-cart"></i> Cart (0)</a>
+        <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart (<span id="cart-count">0</span>)</a>
       </div>
     </div>
   </header>
@@ -35,7 +35,7 @@
     <div class="container">
       <h1>Modern Furniture for Every Home</h1>
       <p>Discover stylish and functional furniture that transforms your space.</p>
-      <a href="#" class="cta-button">Shop Now</a>
+      <a href="shop.html" class="cta-button">Shop Now</a>
     </div>
   </section>
 
@@ -44,23 +44,23 @@
     <div class="container">
       <h2>Featured Products</h2>
       <div class="product-grid">
-        <div class="product">
+        <div class="product" data-id="1" data-category="sofas" data-price="120000">
           <img src="images/sofa.jpg" alt="Luxury Sofa">
           <h3>Luxury Sofa</h3>
           <p><span class="currency">KSh</span> 120,000</p>
-          <button>Add to Cart</button>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
-        <div class="product">
+        <div class="product" data-id="2" data-category="tables" data-price="85000">
           <img src="images/Dining-set.png" alt="Modern Dining Table">
           <h3>Modern Dining Table</h3>
           <p><span class="currency">KSh</span> 85,000</p>
-          <button>Add to Cart</button>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
-        <div class="product">
+        <div class="product" data-id="3" data-category="beds" data-price="95000">
           <img src="images/bed2.webp" alt="Comfortable Bed">
           <h3>Comfortable Bed</h3>
           <p><span class="currency">KSh</span> 95,000</p>
-          <button>Add to Cart</button>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
       </div>
     </div>
@@ -94,5 +94,54 @@
       <p>&copy; 2023 Furniture Store. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- JavaScript for Cart Functionality -->
+  <script>
+    // Function to add an item to the cart
+    function addToCart(product) {
+      // Get the current cart from localStorage
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Check if the product is already in the cart
+      const existingItem = cart.find((item) => item.id === product.id);
+
+      if (existingItem) {
+        // Update quantity if the item already exists
+        existingItem.quantity += 1;
+      } else {
+        // Add the item to the cart if it doesn't exist
+        cart.push({ ...product, quantity: 1 });
+      }
+
+      // Save the updated cart to localStorage
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      // Update the cart count in the header
+      updateCartCount();
+    }
+
+    // Function to update the cart count in the header
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const cartCountElement = document.getElementById("cart-count");
+      cartCountElement.textContent = cart.length;
+    }
+
+    // Add event listeners to "Add to Cart" buttons
+    document.querySelectorAll(".add-to-cart").forEach((button) => {
+      button.addEventListener("click", () => {
+        const product = {
+          id: button.closest(".product").dataset.id, // Unique product ID
+          name: button.closest(".product").querySelector("h3").textContent,
+          price: parseFloat(button.closest(".product").querySelector("p").textContent.replace("KSh ", "").replace(",", "")),
+          image: button.closest(".product").querySelector("img").src,
+        };
+        addToCart(product);
+      });
+    });
+
+    // Update the cart count on page load
+    updateCartCount();
+  </script>
 </body>
 </html>
