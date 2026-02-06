@@ -58,7 +58,7 @@ header .cart a {
 
 /* Hero Section */
 .hero {
-  background: url('images/banner.webp') no-repeat center center/cover;
+  background: url('images/banner1.png') no-repeat center center/cover;
   color: #fff;
   text-align: center;
   padding: 100px 0;
@@ -562,4 +562,5 @@ footer p {
 
 .contact button:hover {
   background: #ff6f61;
+
 }
